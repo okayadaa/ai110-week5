@@ -33,6 +33,10 @@ NEGATIVE_WORDS = [
     "terrible",
     "awful",
     "angry",
+    "mad",
+    "furious",
+    "frustrated",
+    "annoyed",
     "upset",
     "tired",
     "stressed",
@@ -65,6 +69,18 @@ SAMPLE_POSTS = [
     "That meme had me crying from laughter 😂",
     "I absolutely love getting stuck in traffic for an hour",
     "Not gonna lie I'm kinda sad and tired today",
+    "I am sad",
+    "Im sad today",
+    "Feeling really sad and down",
+    "I am happy",
+    "Im happy about how today went",
+    "Happy and excited for class",
+    "Im mad about what happened",
+    "I feel so angry and mad right now",
+    "I am furious about this",
+    "This is frustrating and I am annoyed",
+    "I'm furious that my code keeps breaking",
+    "Lowkey mad but still proud I finished",
 ]
 
 # Human labels for each post above.
@@ -93,6 +109,18 @@ TRUE_LABELS = [
     "positive",  # "That meme had me crying from laughter 😂"
     "negative",  # "I absolutely love getting stuck in traffic for an hour"
     "negative",  # "Not gonna lie I'm kinda sad and tired today"
+    "negative",  # "I am sad"
+    "negative",  # "Im sad today"
+    "negative",  # "Feeling really sad and down"
+    "positive",  # "I am happy"
+    "positive",  # "Im happy about how today went"
+    "positive",  # "Happy and excited for class"
+    "negative",  # "Im mad about what happened"
+    "negative",  # "I feel so angry and mad right now"
+    "negative",  # "I am furious about this"
+    "negative",  # "This is frustrating and I am annoyed"
+    "negative",  # "I'm furious that my code keeps breaking"
+    "mixed",     # "Lowkey mad but still proud I finished"
 ]
 
 # TODO: Add more posts and labels as you experiment.

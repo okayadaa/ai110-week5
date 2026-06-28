@@ -152,8 +152,11 @@ if __name__ == "__main__":
         title="Test Set Evaluation (held-out)",
     )
 
+    # Retrain on all labeled examples before the interactive demo.
+    interactive_vectorizer, interactive_model = train_ml_model(SAMPLE_POSTS, TRUE_LABELS)
+
     # Let the user try their own examples.
-    run_interactive_loop(vectorizer, model)
+    run_interactive_loop(interactive_vectorizer, interactive_model)
 
     print("\nTip: Compare these predictions with the rule based model")
     print("by running `python main.py`. Notice where they fail in")
