@@ -23,6 +23,8 @@ POSITIVE_WORDS = [
     "chill",
     "relaxed",
     "amazing",
+    "hopeful",
+    "proud",
 ]
 
 NEGATIVE_WORDS = [
@@ -55,6 +57,14 @@ SAMPLE_POSTS = [
     "I just love when my code breaks five minutes before class 💀",
     "Feeling kinda meh about everything today",
     "Highkey tired but excited for what comes next 🥲",
+    "I am so happy today",
+    "Feeling happy and relaxed",
+    "Honestly just a good chill day",
+    "This exam was awful and I'm so upset",
+    "Lowkey bored but whatever",
+    "That meme had me crying from laughter 😂",
+    "I absolutely love getting stuck in traffic for an hour",
+    "Not gonna lie I'm kinda sad and tired today",
 ]
 
 # Human labels for each post above.
@@ -75,9 +85,17 @@ TRUE_LABELS = [
     "negative",  # "I just love when my code breaks five minutes before class 💀"
     "neutral",   # "Feeling kinda meh about everything today"
     "mixed",     # "Highkey tired but excited for what comes next 🥲"
+    "positive",  # "I am so happy today"
+    "positive",  # "Feeling happy and relaxed"
+    "positive",  # "Honestly just a good chill day"
+    "negative",  # "This exam was awful and I'm so upset"
+    "neutral",   # "Lowkey bored but whatever"
+    "positive",  # "That meme had me crying from laughter 😂"
+    "negative",  # "I absolutely love getting stuck in traffic for an hour"
+    "negative",  # "Not gonna lie I'm kinda sad and tired today"
 ]
 
-# TODO: Add 5-10 more posts and labels.
+# TODO: Add more posts and labels as you experiment.
 #
 # Requirements:
 #   - For every new post you add to SAMPLE_POSTS, you must add one

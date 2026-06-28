@@ -12,6 +12,7 @@ from typing import List, Tuple
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 from dataset import SAMPLE_POSTS, TRUE_LABELS
 
@@ -40,7 +41,7 @@ def train_ml_model(
     if not texts:
         raise ValueError("No training data provided. Add examples in dataset.py.")
 
-    vectorizer = CountVectorizer()
+    vectorizer = CountVectorizer(ngram_range=(1, 2))
     X = vectorizer.fit_transform(texts)
 
     model = LogisticRegression(max_iter=1000)
@@ -54,6 +55,7 @@ def evaluate_on_dataset(
     labels: List[str],
     vectorizer: CountVectorizer,
     model: LogisticRegression,
+    title: str = "ML Model Evaluation on Dataset",
 ) -> float:
     """
     Evaluate the trained model on a labeled dataset.
@@ -70,7 +72,7 @@ def evaluate_on_dataset(
     X = vectorizer.transform(texts)
     preds = model.predict(X)
 
-    print("=== ML Model Evaluation on Dataset ===")
+    print(f"=== {title} ===")
     correct = 0
     for text, true_label, pred_label in zip(texts, labels, preds):
         is_correct = pred_label == true_label
@@ -125,11 +127,30 @@ if __name__ == "__main__":
     print("Training an ML model on SAMPLE_POSTS and TRUE_LABELS from dataset.py...")
     print("Make sure you have added enough labeled examples before running this.\n")
 
-    # Train the model on the current dataset.
-    vectorizer, model = train_ml_model(SAMPLE_POSTS, TRUE_LABELS)
+    train_texts, test_texts, train_labels, test_labels = train_test_split(
+        SAMPLE_POSTS,
+        TRUE_LABELS,
+        test_size=0.25,
+        random_state=42,
+        stratify=TRUE_LABELS,
+    )
 
-    # Evaluate on the same dataset (training accuracy).
-    evaluate_on_dataset(SAMPLE_POSTS, TRUE_LABELS, vectorizer, model)
+    vectorizer, model = train_ml_model(train_texts, train_labels)
+
+    evaluate_on_dataset(
+        train_texts,
+        train_labels,
+        vectorizer,
+        model,
+        title="Training Set Evaluation",
+    )
+    evaluate_on_dataset(
+        test_texts,
+        test_labels,
+        vectorizer,
+        model,
+        title="Test Set Evaluation (held-out)",
+    )
 
     # Let the user try their own examples.
     run_interactive_loop(vectorizer, model)
